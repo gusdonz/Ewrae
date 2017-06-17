@@ -1,12 +1,9 @@
 const Discord = require("discord.js");
-var bot = new Discord.Client();
 const settings = require("./firefly.json")
 
-var respostas = {
-  "Sim",
-  "Não",
-  "Talvez"
-}
+var respostas = ["Sim","Não","Talvez"];
+
+var bot = new Discord.Client();
 
 bot.on('ready', ready => {
   console.log(`Logado como ${bot.user.username} e pronto para uso.`);
@@ -22,11 +19,9 @@ bot.on("message", message => {
           message.channel.sendMessage("Meu ping é de " + bot.ping + "ms");
           break;
         case "8ball":
-          if(args[1]) {
-            message.channel.sendMessage(respostas[Math.floor(Math.random() * respostas.length)]);
-          } else {
-            message.channel.sendMessage("Não entendi.");
-          }
+          if(args[1]) message.channel.sendMessage(respostas[Math.floor(Math.random() * respostas.length)]);
+          else message.channel.sendMessage("Não entendi.");
+          break;
         default:
           message.reply("Este comando é invalido.");
   }
