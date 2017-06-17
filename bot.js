@@ -19,8 +19,8 @@ bot.on("message", message => {
           message.channel.sendMessage("Meu ping é de " + bot.ping + "ms");
           break;
         case "8ball":
-          if(args[1]) message.channel.sendMessage(respostas[Math.floor(Math.random() * respostas.length)]);
-          else message.channel.sendMessage("Não entendi.");
+          if(args[1]) message.reply(respostas[Math.floor(Math.random() * respostas.length)]);
+          else message.reply("Não entendi.");
           break;
         default:
           message.reply("Este comando é invalido.");
