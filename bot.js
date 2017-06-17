@@ -16,7 +16,7 @@ bot.on("message", message => {
 
       switch(args[0].toLowerCase()) {
         case "ping":
-          message.channel.sendMessage("Meu ping é de " + bot.ping + "ms");
+          message.channel.send("Meu ping é de " + bot.ping + "ms");
           break;
         case "8ball":
           if(args[1]) message.reply(respostas[Math.floor(Math.random() * respostas.length)]);
