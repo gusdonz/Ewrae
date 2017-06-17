@@ -1,0 +1,22 @@
+{
+  "version": "0.1.0",
+  "description": "A simple discord bot based discord.js",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "ajax-request": "^1.2.1",
+    "discord.js": "^11.1.0",
+    "bufferutil": "^3.0.0",
+    "erlpack": "^0.1.0",
+    "node-opus": "^0.2.5",
+    "opusscript":"^0.0.3",
+    "sodium": "^2.0.1",
+    "libsodium-wrappers": "^0.5.1",
+    "uws": "^0.14.1",
+    "express": "^4.13.3",
+    "get-json": "0.0.3",
+    "jquery": "^2.2.4"
+    }
+}
