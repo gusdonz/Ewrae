@@ -28,12 +28,14 @@ bot.on("message", message => {
           break;
         case "serverinfo":
           var embed = new Discord.RichEmbed()
-          .setTitle("Informações de " + message.guild.name)
+          .setTitle(message.guild.name)
           .setColor(0x9999FF)
-          .setAuthor(message.guild.name, message.guild.iconURL)
+          .setAuthor("" + message.guild.name, message.guild.iconURL)
           .setFooter("© " + message.guild.name, message.guild.iconURL)
           .setThumbnail(message.guild.iconURL)
-          .addField("Foi criado em", message.guild.createdAt.getDate() + "/" + message.guild.createdAt.getMonth() + "/" + message.guild.createdAt.getFullYear(), true);
+          .addField(":blue_book: Nome:", message.guild.name)
+          .addField(":man_in_tuxedo::skin-tone-2: Dono:", message.guild.owner.name)
+          .addField("Foi criado em:", message.guild.createdAt.getDate() + "/" + message.guild.createdAt.getMonth() + "/" + message.guild.createdAt.getFullYear(), true);
           message.channel.sendEmbed(embed);
           break;
         default:
