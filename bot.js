@@ -17,7 +17,7 @@ bot.on("message", message => {
       switch(args[0].toLowerCase()) {
         case "ping":
         var embed = new Discord.RichEmbed()
-          .setTitle("Meu ping é de " + bot.ping + "ms.");
+          .setTitle("Meu ping é de " + bot.ping + "ms.")
           .setColor(0xCC6699);
           message.channel.sendEmbed(embed);
           break;
@@ -27,7 +27,7 @@ bot.on("message", message => {
           break;
         case "serverinfo":
           var embed = new Discord.RichEmbed()
-          .setTitle("Informações de " + message.guild.name);
+          .setTitle("Informações de " + message.guild.name)
           .setColor(0x9999FF)
           .addField("Foi criado em", message.guild.createdAt.getDate() + "/" + message.guild.createdAt.getMonth() + "/" + message.guild.createdAt.getFullYear(), true);
           message.channel.sendEmbed(embed);
