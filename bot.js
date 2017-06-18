@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const settings = require("./firefly.json")
+const settings = require("./ewrae.json")
 
 var respostas = ["Sim","Não","Talvez"];
 
@@ -16,11 +16,16 @@ bot.on("message", message => {
 
       switch(args[0].toLowerCase()) {
         case "ping":
-          message.channel.send("Meu ping é de " + bot.ping + "ms");
+        var embed = Discord.RichEmbed()
+          .setTitle("Meu ping é de " + bot.ping + "ms.");
           break;
         case "8ball":
           if(args[1]) message.reply(respostas[Math.floor(Math.random() * respostas.length)]);
           else message.reply("Não entendi.");
+          break;
+        case "serverinfo":
+          var embed = Discord.RichEmbed()
+          .setTitle("Informações de " + message.guild.name);
           break;
         default:
           message.reply("Este comando é invalido.");
