@@ -18,6 +18,8 @@ bot.on("message", message => {
         case "ping":
         var embed = new Discord.RichEmbed()
           .setTitle("Meu ping é de " + bot.ping + "ms.")
+          .setAuthor(bot.user.username, bot.user.avatarURL)
+          .setFooter("© " + message.guild.name, message.guild.iconURL)
           .setColor(0xCC6699);
           message.channel.sendEmbed(embed);
           break;
@@ -29,6 +31,9 @@ bot.on("message", message => {
           var embed = new Discord.RichEmbed()
           .setTitle("Informações de " + message.guild.name)
           .setColor(0x9999FF)
+          .setAuthor(message.guild.name, message.guild.iconURL)
+          .setFooter("© " + message.guild.name, message.guild.iconURL)
+          .setThumbnail(message.guild.iconURL)
           .addField("Foi criado em", message.guild.createdAt.getDate() + "/" + message.guild.createdAt.getMonth() + "/" + message.guild.createdAt.getFullYear(), true);
           message.channel.sendEmbed(embed);
           break;
