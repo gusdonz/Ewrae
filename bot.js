@@ -18,7 +18,6 @@ bot.on("message", message => {
         case "ping":
         var embed = new Discord.RichEmbed()
           .setTitle("Meu ping é de " + bot.ping + "ms.")
-          .setAuthor(bot.user.username, bot.user.avatarURL)
           .setFooter("© " + bot.user.username, bot.user.avatarURL)
           .setColor(0xCC6699);
           message.channel.sendEmbed(embed);
