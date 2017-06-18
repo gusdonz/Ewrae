@@ -18,6 +18,7 @@ bot.on("message", message => {
         case "ping":
         var embed = new Discord.RichEmbed()
           .setTitle("Meu ping é de " + bot.ping + "ms.");
+          message.channel.send(embed);
           break;
         case "8ball":
           if(args[1]) message.reply(respostas[Math.floor(Math.random() * respostas.length)]);
@@ -26,6 +27,7 @@ bot.on("message", message => {
         case "serverinfo":
           var embed = new Discord.RichEmbed()
           .setTitle("Informações de " + message.guild.name);
+          message.channel.send(embed);
           break;
         default:
           message.reply("Este comando é invalido.");
