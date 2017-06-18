@@ -36,7 +36,7 @@ bot.on("message", message => {
           .addField(":man_in_tuxedo::skin-tone-2: Dono:", message.guild.owner.username, true)
           .addField(":key: ID do Dono:", message.guild.ownerID, true)
           .addField(":earth_americas: Pais do servidor:", message.guild.region, true)
-          .addField(":bust_in_silhouette: Membros:", message.guild.members.length, true)
+          //.addField(":bust_in_silhouette: Membros:", message.guild.memberCount, true)
           .addField("Onlines agora:", message.guild.memberCount, true)
           .addField("Foi criado em:", message.guild.createdAt.getDate() + "/" + message.guild.createdAt.getMonth() + "/" + message.guild.createdAt.getFullYear(), true);
           message.channel.sendEmbed(embed);
