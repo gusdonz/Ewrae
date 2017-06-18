@@ -33,8 +33,12 @@ bot.on("message", message => {
           .setAuthor("" + message.guild.name, message.guild.iconURL)
           .setFooter("© " + message.guild.name, message.guild.iconURL)
           .setThumbnail(message.guild.iconURL)
-          .addField(":blue_book: Nome:", message.guild.name)
-          .addField(":man_in_tuxedo::skin-tone-2: Dono:", message.guild.owner.name)
+          .addField(":blue_book: Nome:", message.guild.name, true)
+          .addField(":man_in_tuxedo::skin-tone-2: Dono:", message.guild.owner.username, true)
+          .addField(":key: ID do Dono:", message.guild.ownerID, true)
+          .addField(":earth_americas: Pais do servidor:", message.guild.region, true)
+          .addField(":bust_in_silhouette: Membros:", message.guild.members, true)
+          .addField("Onlines agora:", message.guild.memberCount, true)
           .addField("Foi criado em:", message.guild.createdAt.getDate() + "/" + message.guild.createdAt.getMonth() + "/" + message.guild.createdAt.getFullYear(), true);
           message.channel.sendEmbed(embed);
           break;
