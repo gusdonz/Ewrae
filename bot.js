@@ -16,7 +16,7 @@ bot.on("message", message => {
 
       switch(args[0].toLowerCase()) {
         case "ping":
-        var embed = Discord.RichEmbed()
+        var embed = new Discord.RichEmbed()
           .setTitle("Meu ping é de " + bot.ping + "ms.");
           break;
         case "8ball":
@@ -24,7 +24,7 @@ bot.on("message", message => {
           else message.reply("Não entendi.");
           break;
         case "serverinfo":
-          var embed = Discord.RichEmbed()
+          var embed = new Discord.RichEmbed()
           .setTitle("Informações de " + message.guild.name);
           break;
         default:
