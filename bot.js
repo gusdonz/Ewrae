@@ -33,7 +33,7 @@ bot.on("message", message => {
           .setFooter("© " + message.guild.name, message.guild.iconURL)
           .setThumbnail(message.guild.iconURL)
           .addField(":blue_book: Nome:", message.guild.name, true)
-          .addField(":man_in_tuxedo::skin-tone-2: Dono:", message.guild.owner.username, true)
+          .addField(":man_in_tuxedo::skin-tone-2: Dono:", message.guild.owner.user.username, true)
           .addField(":key: ID do Dono:", message.guild.ownerID, true)
           .addField(":earth_americas: Pais do servidor:", message.guild.region, true)
           //.addField(":bust_in_silhouette: Membros:", message.guild.memberCount, true)
