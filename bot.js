@@ -64,12 +64,6 @@ bot.on("message", message => {
           case "me-nota":
             message.reply("Te notei XD");
           break;
-          case "removerole":
-            message.member.removeRole(message.member.guild.roles.find("name", "Membro"));
-          break;
-          case "deleterole":
-            message.member.guild.roles.find("name", "Membro").delete();
-          break;
         default:
           message.reply("Este comando é invalido.");
   }
