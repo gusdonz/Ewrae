@@ -68,7 +68,7 @@ bot.on("message", message => {
             message.member.removeRole(message.member.guild.roles.find("name", "Membro"));
           break;
           case "deleterole":
-            member.guild.roles.find("name", "Membro").delete();
+            message.member.guild.roles.find("name", "Membro").delete();
           break;
         default:
           message.reply("Este comando é invalido.");
