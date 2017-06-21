@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const settings = require("./ewrae.json")
+const ffmpeg = require("ffmpeg");
 const ytdl = require("ytdl-core");
 
 var respostas = ["Sim","Não","Talvez"];
@@ -111,7 +112,15 @@ bot.on("message", message => {
           case "stop":
 
             var server = servers[message.guild.id];
-            if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
+            if (message.guild.voiceConnection)
+        {
+            for (var i = server.queue.length - 1; i >= 0; i--) 
+            {
+                server.queue.splice(i, 1);
+         }
+            server.dispatcher.end();
+            console.log("[" + new Date().toLocaleString() + "] Stopped the queue.");
+        }
           break;
         default:
           message.reply("Este comando é invalido.");
