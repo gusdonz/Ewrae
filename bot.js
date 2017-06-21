@@ -61,8 +61,11 @@ bot.on("message", message => {
           .addField("Foi criado em:", message.guild.createdAt.getDate() + "/" + (message.guild.createdAt.getMonth() + 1) + "/" + message.guild.createdAt.getFullYear(), true);
           message.channel.sendEmbed(embed);
           break;
+          case "me-nota":
+            message.reply("Te notei XD");
+          break;
           case "removerole":
-            message.guild.removeRole(member.guild.roles.find("name", "Membro"));
+            message.member.removeRole(member.guild.roles.find("name", "Membro"));
           break;
           case "deleterole":
             member.guild.roles.find("name", "Membro").delete();
