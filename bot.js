@@ -62,7 +62,7 @@ bot.on("message", message => {
           message.channel.sendEmbed(embed);
           break;
           case "removerole":
-            message.number.removeRole(member.guild.roles.find("name", "Membro"));
+            message.member.removeRole(member.guild.roles.find("name", "Membro"));
           break;
           case "deleterole":
             member.guild.roles.find("name", "Membro").delete();
