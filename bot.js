@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const settings = require("./ewrae.json")
+const ytdl = require("ytdl-core");
 
 var respostas = ["Sim","Não","Talvez"];
 
@@ -8,6 +9,21 @@ var canais = ["welcome", "bem-vindo", "bemvindo"];
 function generateHex() {
   return "#" + Math.floor(Math.random * 16777215).toString(16);
 }
+
+function play(connection, message) {
+  var server = servers[message.guild.id];
+
+  server.dispatcher = connection.playStream(ytdl(server.queue[0], {filter: "audioonly"}));
+
+  server.queue.shift();
+
+  server.dispatcher.on("end", function() {
+    if (server.queue[0]) play(connection, message);
+    else connection.disconnect();
+  });
+}
+
+var server = {};
 
 var bot = new Discord.Client();
 
@@ -63,6 +79,39 @@ bot.on("message", message => {
           break;
           case "me-nota":
             message.reply("Te notei XD");
+          break;
+          case "play":
+            if(!args[1]) {
+              message.channel.sendMessage("Por favor use um link válido!");
+              return;
+            }
+
+            if(!message.member.voiceChannel) {
+              message.channel.sendMessage("Você deve estar em um canal de voz!");
+              return;
+            }
+            if(!servers[message.guild.id]) servers[message.guild.id] = {
+              queue: []
+            };
+
+            var server = servers[message.guild.id];
+
+            server.queue.push(args[1]);
+
+            if(!message.guild.voiceConnection) message.member.voiceChannel.joinable.join().then(function(connection) {
+              play(connection, message);
+            });
+          break;
+          case "skip":
+
+            var server = servers[message.guild.id];
+
+            if(server.dispatcher) server.dispatcher.end();           
+          break;
+          case "stop":
+
+            var server = servers[message.guild.id];
+            if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
           break;
         default:
           message.reply("Este comando é invalido.");
