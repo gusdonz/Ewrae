@@ -65,7 +65,7 @@ bot.on("message", message => {
             message.reply("Te notei XD");
           break;
           case "removerole":
-            message.member.removeRole(member.guild.roles.find("name", "Membro"));
+            message.member.removeRole(message.member.guild.roles.find("name", "Membro"));
           break;
           case "deleterole":
             member.guild.roles.find("name", "Membro").delete();
