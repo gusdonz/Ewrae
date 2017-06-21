@@ -23,7 +23,7 @@ function play(connection, message) {
   });
 }
 
-var server = {};
+var servers = {};
 
 var bot = new Discord.Client();
 
