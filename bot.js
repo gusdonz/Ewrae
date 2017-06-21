@@ -3,10 +3,30 @@ const settings = require("./ewrae.json")
 
 var respostas = ["Sim","Não","Talvez"];
 
+var canais = ["welcome", "bem-vindo", "bemvindo"];
+
+function generateHex() {
+  return "#" + Math.floor(Math.random * 16777215).toString(16);
+}
+
 var bot = new Discord.Client();
 
 bot.on('ready', ready => {
   console.log(`Logado como ${bot.user.username} e pronto para uso.`);
+});
+
+bot.on("guildMemberAdd", member => {
+  member.guild.channels.find("name", canais).sendMessage(member.toString() + " Bem-vindo ao servidor " + member.guild.name);
+
+  member.addRole(member.guild.roles.find("name", "Membro"));
+
+  member.guild.createRole({
+    name: member.user.username,
+    color: generateHex(),
+    permissions: []
+  }).then(function(role) {
+    member.addRole(role); 
+  });
 });
 
 bot.on("message", message => {
@@ -38,8 +58,14 @@ bot.on("message", message => {
           .addField(":earth_americas: Pais do servidor:", message.guild.region, true)
           //.addField(":bust_in_silhouette: Membros:", message.guild.memberCount, true)
           .addField("Onlines agora:", message.guild.memberCount, true)
-          .addField("Foi criado em:", message.guild.createdAt.getDate() + "/" + message.guild.createdAt.getMonth() + "/" + message.guild.createdAt.getFullYear(), true);
+          .addField("Foi criado em:", message.guild.createdAt.getDate() + "/" + (message.guild.createdAt.getMonth() + 1) + "/" + message.guild.createdAt.getFullYear(), true);
           message.channel.sendEmbed(embed);
+          break;
+          case "removerole":
+            message.number.removeRole(member.guild.roles.find("name", "Membro"));
+          break;
+          case "deleterole":
+            member.guild.roles.find("name", "Membro").delete();
           break;
         default:
           message.reply("Este comando é invalido.");
