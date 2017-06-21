@@ -1,2 +1,2 @@
-# FireflyBotV2
+# Ewrae
 A discord.js bot
